@@ -1,5 +1,5 @@
 import ErrorHandler from "../error/error.js";
-import { Revervation } from "../models/reservationSchema.js";
+import { Reservation } from "../models/reservationSchema.js";
 
 export const sendReservation= async (req,res,next)=>{
     const {firstName , lastName, email,phone,date,time} = req.body;
@@ -8,7 +8,7 @@ export const sendReservation= async (req,res,next)=>{
         return next(new ErrorHandler("Please fill all the data",400));
     }
     try{
-        await Revervation.create({
+        await Reservation.create({
             firstName,
             lastName,
             email,

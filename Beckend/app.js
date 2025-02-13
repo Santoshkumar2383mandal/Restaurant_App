@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import {dbConnection} from "./database/database.js";
+import {dbConnection} from "./database/database.js"
 import { errorMiddleware } from "./error/error.js";
 import {reservationRouter} from "./routes/reservationRoute.js"
 const app = express();
@@ -14,10 +14,13 @@ app.use(
         methods: ["POST"],
         credentials: true,
     })
-)
+);
 
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+
+
+app.use(express.json()); // Parses JSON body
+app.use(express.urlencoded({ extended: true })); // Parses URL-encoded form data
+
 app.use("/api/v1/reservation",reservationRouter);
 
 dbConnection();
